@@ -1,5 +1,5 @@
 import {Field} from "./Field";
 
 export interface Metadata {
-  fields: Field[]
+  fields: Field<unknown>[]
 }

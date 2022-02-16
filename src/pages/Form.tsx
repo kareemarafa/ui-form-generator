@@ -1,7 +1,5 @@
-import {Metadata} from "../interfaces/Metadata";
-import {PersonalInfo} from "../interfaces/PersonalInfo";
+import {Field, Metadata, PersonalInfo} from "../interfaces";
 import {FormFields} from "../components/FormControls";
-import {Field} from "../interfaces/Field";
 
 const Form = () => {
 
@@ -32,19 +30,21 @@ const Form = () => {
     comment: "The best developer in the world"
   }
 
-  const RenderGenericFormField = ({type, label, id, disabled, value}: Field) => {
+  const RenderGenericFormField = ({type, label, id, disabled, value, ...props}: Field<unknown>) => {
     const FormControl = FormFields[type];
     return (
-      <FormControl {...{label, type, id, disabled, value}}/>
+      <FormControl {...{label, type, id, disabled, value}} {...props}/>
     )
   }
 
   return (
     <form>
-      {Object.keys(data).map((key: string) => {
-        const [meta] = metadata.fields.filter(meta => meta.id === key);
+      {Object.keys(data).map((key: any) => {
+        const [props] = metadata.fields.filter(meta => meta.id === key);
         return (
-          meta && <RenderGenericFormField key={meta.id} {...meta}/>
+          props && <RenderGenericFormField key={props.id} {...props}
+                                           value={data[key]}
+                                           onChange={console.log}/>
         )
       })}
     </form>
