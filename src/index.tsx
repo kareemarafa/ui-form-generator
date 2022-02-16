@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";
 
 import './styles/override.scss';
 
 import Layout from "./pages/Layout";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <Layout />
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
