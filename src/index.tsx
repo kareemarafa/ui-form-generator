@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 
 import './styles/override.scss';
 
-import {Layout} from "./pages/Layout";
+import Layout from "./pages/Layout";
 
 ReactDOM.render(
   <React.StrictMode>
