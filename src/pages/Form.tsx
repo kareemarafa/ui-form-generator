@@ -32,22 +32,19 @@ const Form = () => {
     comment: "The best developer in the world"
   }
 
-  const RenderGenericFormField = (fieldMetadata: Field) => {
-    const FormControl = FormFields[fieldMetadata.type]
+  const RenderGenericFormField = ({type, label, id, disabled, value}: Field) => {
+    const FormControl = FormFields[type];
     return (
-      <FormControl key={fieldMetadata.id}
-                   label={fieldMetadata.label}
-                   type={fieldMetadata.type}
-                   id={fieldMetadata.id}/>
+      <FormControl {...{label, type, id, disabled, value}}/>
     )
   }
 
   return (
     <form>
-      {Object.keys(data).map((key: any) => {
-        const fieldMetadata = metadata.fields.filter(meta => meta.id === key)[0];
+      {Object.keys(data).map((key: string) => {
+        const [meta] = metadata.fields.filter(meta => meta.id === key);
         return (
-          <RenderGenericFormField {...fieldMetadata} />
+          meta && <RenderGenericFormField key={meta.id} {...meta}/>
         )
       })}
     </form>

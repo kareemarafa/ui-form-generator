@@ -3,4 +3,6 @@ export interface Field {
   type: string;
   label: string;
   disabled?: boolean;
+  value?: any;
+  OnChange?: (a: any) => void;
 }
