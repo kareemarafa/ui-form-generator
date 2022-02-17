@@ -1,5 +1,6 @@
 import {Field, Metadata, PersonalInfo} from "../interfaces";
 import {FormFields} from "../components/FormControls";
+import {FormEvent, useState} from "react";
 
 const Form = () => {
 
@@ -30,12 +31,22 @@ const Form = () => {
     comment: "The best developer in the world"
   }
 
-  const RenderGenericFormField = ({type, label, id, disabled, value, ...props}: Field<unknown>) => {
+  const RenderGenericFormField = ({type, label, id, disabled, initValue, ...props}: Field<unknown>) => {
+    const [value, setValue] = useState<typeof initValue>(initValue)
     const FormControl = FormFields[type];
     return (
-      <FormControl {...{label, type, id, disabled, value}} {...props}/>
+      <FormControl {...{label, type, id, disabled, value}}
+                   onChange={(e: any) => setValue(e.target.value)}
+                   {...props}/>
     )
   }
+
+  const [formValue, setFormValue] = useState<any>(data);
+
+  // const handleChange = (event: any) => {
+  //   setFormValue({...formValue, [event.target.id]: event.target.value});
+  //   console.log(formValue)
+  // }
 
   return (
     <form>
@@ -43,8 +54,7 @@ const Form = () => {
         const [props] = metadata.fields.filter(meta => meta.id === key);
         return (
           props && <RenderGenericFormField key={props.id} {...props}
-                                           value={data[key]}
-                                           onChange={console.log}/>
+                                           initValue={formValue[key]} />
         )
       })}
     </form>
