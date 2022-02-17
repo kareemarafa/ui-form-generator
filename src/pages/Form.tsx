@@ -1,6 +1,6 @@
-import {Field, Metadata, PersonalInfo} from "../interfaces";
+import {GenericField, Metadata, PersonalInfo} from "../interfaces";
 import {FormFields} from "../components/FormControls";
-import {FormEvent, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
 
 const Form = () => {
 
@@ -31,32 +31,45 @@ const Form = () => {
     comment: "The best developer in the world"
   }
 
-  const RenderGenericFormField = ({type, label, id, disabled, initValue, ...props}: Field<unknown>) => {
-    const [value, setValue] = useState<typeof initValue>(initValue)
-    const FormControl = FormFields[type];
+  const RenderGenericFormField = ({initValue, setFieldValue, ...props}: GenericField<unknown>) => {
+    const FormControl = FormFields[props.type];
+    useEffect(() => setFieldValue(props.id, initValue), []) // Set field value at form
     return (
-      <FormControl {...{label, type, id, disabled, value}}
-                   onChange={(e: any) => setValue(e.target.value)}
-                   {...props}/>
+      <FormControl
+        defaultValue={initValue}
+        onChange={(event: any) => setFieldValue(props.id, event.target.value)} {...props}/>
     )
   }
 
-  const [formValue, setFormValue] = useState<any>(data);
+  const [formValue, setFormValue] = useState<any>({});
 
-  // const handleChange = (event: any) => {
-  //   setFormValue({...formValue, [event.target.id]: event.target.value});
-  //   console.log(formValue)
-  // }
+  const handleChange = (fieldName: string, value: any) => {
+    setFormValue((current: PersonalInfo) => {
+      current[fieldName] = value
+      return current;
+    });
+  }
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log(formValue)
+  }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       {Object.keys(data).map((key: any) => {
-        const [props] = metadata.fields.filter(meta => meta.id === key);
+        const [props] = metadata.fields.filter(meta => meta.id === key); // catch first item in the filtered array
         return (
           props && <RenderGenericFormField key={props.id} {...props}
-                                           initValue={formValue[key]} />
+                                           initValue={data[key]}
+                                           setFieldValue={handleChange}/>
         )
       })}
+      <div className="row mt-2">
+        <div className="col">
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </div>
+      </div>
     </form>
   )
 }
