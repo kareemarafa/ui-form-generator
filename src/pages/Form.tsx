@@ -4,6 +4,9 @@ import {FormEvent, useEffect, useState} from "react";
 
 const Form = () => {
 
+  /**
+   * Dummy data
+   */
   const metadata: Metadata = {
     fields: [
       {
@@ -25,12 +28,27 @@ const Form = () => {
     ]
   }
 
+  /**
+   * Dummy data
+   */
   const data: PersonalInfo = {
     name: "Bob",
     age: 42,
     comment: "The best developer in the world"
   }
 
+  /**
+   * form state
+   */
+  const [formValue, setFormValue] = useState<any>({});
+
+  /**
+   * Use independent generic form field
+   * @param initValue
+   * @param setFieldValue
+   * @param props
+   * @constructor
+   */
   const RenderGenericFormField = ({initValue, setFieldValue, ...props}: GenericField<unknown>) => {
     const FormControl = FormFields[props.type];
     useEffect(() => setFieldValue(props.id, initValue), []) // Set field value at form
@@ -41,17 +59,27 @@ const Form = () => {
     )
   }
 
-  const [formValue, setFormValue] = useState<any>({});
-
+  /**
+   * Handle change event
+   * It sets new value to the state object
+   * @param fieldName
+   * @param value
+   */
   const handleChange = (fieldName: string, value: any) => {
     setFormValue((current: PersonalInfo) => {
-      current[fieldName] = value
+      current[fieldName] = value; // set current value with newest
       return current;
     });
   }
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  /**
+   * Handle submit event
+   * Just to console
+   * todo: implement backend errors
+   * @param event
+   */
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault(); // Prevent page loading by html default
     console.log(formValue)
   }
 
