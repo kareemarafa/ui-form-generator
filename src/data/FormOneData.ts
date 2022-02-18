@@ -1,4 +1,12 @@
-import {FormOneType, Metadata} from "../interfaces";
+import {Metadata} from "../interfaces";
+import {GenericFormType} from "../interfaces/GenericFormType";
+
+export interface FormOneType extends GenericFormType {
+  [index: string]: any;
+  name: string;
+  age: number;
+  comment: string;
+}
 
 /**
  * Dummy data
