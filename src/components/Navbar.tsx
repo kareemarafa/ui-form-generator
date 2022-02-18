@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+
 const Navbar = () => {
   return (
     <nav className="navbar navbar-light bg-light">
@@ -5,6 +8,17 @@ const Navbar = () => {
         <div className="d-flex flex-row w-100 justify-content-between">
           <span className="text-black">UI Form Generator <small
             className="text-muted">(CerQlar Assignment)</small></span>
+          <ul className="nav">
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/">Bob's</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/product">Product</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="#">Link</Link>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
