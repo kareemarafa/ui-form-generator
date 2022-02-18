@@ -84,21 +84,24 @@ const Form = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {Object.keys(data).map((key: any) => {
-        const [props] = metadata.fields.filter(meta => meta.id === key); // catch first item in the filtered array
-        return (
-          props && <RenderGenericFormField key={props.id} {...props}
-                                           initValue={data[key]}
-                                           setFieldValue={handleChange}/>
-        )
-      })}
-      <div className="row mt-2">
-        <div className="col">
-          <button type="submit" className="btn btn-primary">Submit</button>
+    <>
+      <form onSubmit={handleSubmit}>
+        {Object.keys(data).map((key: any) => {
+          const [props] = metadata.fields.filter(meta => meta.id === key); // catch first item in the filtered array
+          return (
+            props && <RenderGenericFormField key={props.id} {...props}
+                                             initValue={data[key]}
+                                             setFieldValue={handleChange}/>
+          )
+        })}
+        <div className="row mt-2">
+          <div className="col">
+            <button type="submit" className="btn btn-primary">Submit</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </>
+
   )
 }
 export default Form;
