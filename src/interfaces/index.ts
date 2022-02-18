@@ -4,4 +4,4 @@ export * from './TextareaInterface';
 export * from './JSXComponentField';
 export * from './Metadata';
 
-export * from './PersonalInfo';
+export * from './FormOneType';

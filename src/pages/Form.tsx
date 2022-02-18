@@ -1,41 +1,10 @@
-import {GenericField, Metadata, PersonalInfo} from "../interfaces";
+import {GenericField} from "../interfaces";
 import {FormFields} from "../components/FormControls";
 import {FormEvent, useEffect, useState} from "react";
+import {DynamicForm} from "../interfaces/DynamicForm";
+import {GenericFormType} from "../interfaces/GenericFormType";
 
-const Form = () => {
-
-  /**
-   * Dummy data
-   */
-  const metadata: Metadata = {
-    fields: [
-      {
-        id: 'name',
-        type: 'text',
-        label: 'Name'
-      },
-      {
-        id: 'age',
-        type: 'number',
-        label: 'Age'
-      },
-      {
-        id: 'comment',
-        type: 'textarea',
-        label: 'Comment',
-        disabled: true
-      }
-    ]
-  }
-
-  /**
-   * Dummy data
-   */
-  const data: PersonalInfo = {
-    name: "Bob",
-    age: 42,
-    comment: "The best developer in the world"
-  }
+const Form = ({metadata, data}: DynamicForm<GenericFormType>) => {
 
   /**
    * form state
@@ -66,7 +35,7 @@ const Form = () => {
    * @param value
    */
   const handleChange = (fieldName: string, value: any) => {
-    setFormValue((current: PersonalInfo) => {
+    setFormValue((current: GenericFormType) => {
       current[fieldName] = value; // set current value with newest
       return current;
     });
