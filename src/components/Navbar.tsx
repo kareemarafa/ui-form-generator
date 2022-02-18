@@ -5,7 +5,6 @@ const Navbar = () => {
         <div className="d-flex flex-row w-100 justify-content-between">
           <span className="text-black">UI Form Generator <small
             className="text-muted">(CerQlar Assignment)</small></span>
-          <small className="text-muted">Kareem Arafa</small>
         </div>
       </div>
     </nav>
