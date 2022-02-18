@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-light bg-light">
       <div className="container-fluid">
-        <div className="d-flex flex-row w-100 justify-content-between">
+        <div className="d-flex flex-row w-100 justify-content-between align-items-center">
           <span className="text-black">UI Form Generator <small
             className="text-muted">(CerQlar Assignment)</small></span>
           <ul className="nav">
