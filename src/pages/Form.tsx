@@ -53,12 +53,12 @@ const Form = ({metadata, data}: DynamicForm<GenericFormType>) => {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className="col-6 offset-3">
+      <form className="d-flex flex-column align-items-center" onSubmit={handleSubmit}>
         {Object.keys(data).map((key: any) => {
           const [props] = metadata.fields.filter(meta => meta.id === key); // catch first item in the filtered array
           return (
-            <div key={props.id} className="pb-2">
+            <div key={props.id} className="pb-2 w-100">
               {props && <RenderGenericFormField {...props}
                                                 initValue={data[key]}
                                                 setFieldValue={handleChange}/>}
@@ -66,13 +66,13 @@ const Form = ({metadata, data}: DynamicForm<GenericFormType>) => {
 
           )
         })}
-        <div className="row mt-2">
-          <div className="col">
+        <div className="mt-2">
+          <div className="align-self-end">
             <button type="submit" className="btn btn-primary">Submit</button>
           </div>
         </div>
       </form>
-    </>
+    </div>
 
   )
 }
