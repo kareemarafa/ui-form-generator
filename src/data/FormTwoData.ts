@@ -31,6 +31,17 @@ const metadata: Metadata = {
       label: 'Guarantee'
     },
     {
+      id: 'productionDate',
+      type: 'date',
+      label: 'Production Date'
+    },
+    {
+      id: 'material',
+      type: 'select',
+      label: 'Material',
+      options: [{id: 1, name: 'Leather'}, {id: 2, name: 'Polyester'}]
+    },
+    {
       id: 'description',
       type: 'textarea',
       label: 'Description',
@@ -45,7 +56,9 @@ const metadata: Metadata = {
 const data: FormTwoType = {
   image: productImage,
   name: "MARKUS",
+  material: 2,
   guarantee: 10,
+  productionDate: '20/02/2022',
   description: "Adjust the height and angle of this chair so your workday feels comfortable – the mesh backrest lets air through so you keep cool even when the workload rises. Built to outlast years of ups and downs"
 }
 
