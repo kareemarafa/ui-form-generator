@@ -4,7 +4,7 @@ import {FormEvent, useEffect, useState} from "react";
 import {DynamicForm} from "../interfaces/DynamicForm";
 import {GenericFormType} from "../interfaces/GenericFormType";
 
-const Form = ({metadata, data}: DynamicForm<GenericFormType>) => {
+const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
 
   /**
    * form state
@@ -76,4 +76,4 @@ const Form = ({metadata, data}: DynamicForm<GenericFormType>) => {
 
   )
 }
-export default Form;
+export default GeneratedForm;
