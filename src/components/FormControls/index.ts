@@ -3,6 +3,7 @@ import Textarea from "./Textarea";
 import FileInput from "./FileInput";
 import SelectInput from "./SelectInput";
 import DateInput from "./DateInput";
+import RadioInput from "./RadioInput";
 import {JSXComponentField} from "../../interfaces";
 
 export const FormFields: JSXComponentField = {
@@ -12,4 +13,6 @@ export const FormFields: JSXComponentField = {
   file: FileInput,
   date: DateInput,
   select: SelectInput,
+  radio: RadioInput,
+  checkbox: SelectInput,
 }

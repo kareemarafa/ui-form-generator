@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import GeneratedForm from "./GeneratedForm";
 import FormOneData from '../data/FormOneData';
 import FormTwoData from '../data/FormTwoData';
+import FormThreeData from '../data/FormThreeData';
 
 const Layout = () => {
   return (
@@ -13,6 +14,7 @@ const Layout = () => {
         <Routes>
           <Route path="/" element={<GeneratedForm data={FormOneData.data} metadata={FormOneData.metadata} />} />
           <Route path="/product" element={<GeneratedForm data={FormTwoData.data} metadata={FormTwoData.metadata} />} />
+          <Route path="/listing" element={<GeneratedForm data={FormThreeData.data} metadata={FormThreeData.metadata} />} />
         </Routes>
       </div>
       <Footer />

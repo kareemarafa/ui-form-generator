@@ -6,6 +6,7 @@ export interface Field<T> extends HTMLProps<T> {
   label: string;
   disabled?: boolean;
   options?: SelectOptions[];
+  suffix?: string;
 }
 
 export interface SelectOptions {
