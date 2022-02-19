@@ -1,6 +1,7 @@
 import {Metadata} from "../interfaces";
 import {GenericFormType} from "../interfaces/GenericFormType";
 import cameraImage from '../assets/cannon-5d-markIV.jpeg';
+import Validators from "../helpers/validators";
 
 export interface FormThreeType extends GenericFormType {
   [index: string]: any;
@@ -27,7 +28,8 @@ const metadata: Metadata = {
     {
       id: 'title',
       type: 'text',
-      label: 'Title'
+      label: 'Title',
+      validators: [Validators.isNotEmpty]
     },
     {
       id: 'category',
@@ -44,13 +46,15 @@ const metadata: Metadata = {
     {
       id: 'price',
       type: 'number',
-      label: 'Price'
+      label: 'Price',
+      validators: [Validators.isNotEmpty]
     },
     {
       id: 'description',
       type: 'textarea',
       label: 'Description',
-      rows: 5
+      rows: 5,
+      validators: [Validators.isNotEmpty]
     },
     {
       id: 'termsAndConditions',

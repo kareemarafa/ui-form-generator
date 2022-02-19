@@ -2,6 +2,7 @@ import {Metadata} from "../interfaces";
 import {GenericFormType} from "../interfaces/GenericFormType";
 import productImage from '../assets/markus-office-chair-vissle-dark.jpg';
 import {DateFormatter} from "../helpers/date-formatter";
+import Validators from "../helpers/validators";
 
 export interface FormTwoType extends GenericFormType {
   [index: string]: any;
@@ -21,7 +22,8 @@ const metadata: Metadata = {
     {
       id: 'name',
       type: 'text',
-      label: 'Name'
+      label: 'Name',
+      validators: [Validators.isNotEmpty, Validators.maxLength, Validators.minLength]
     },
     {
       id: 'image',
@@ -31,12 +33,14 @@ const metadata: Metadata = {
     {
       id: 'guarantee',
       type: 'number',
-      label: 'Guarantee'
+      label: 'Guarantee',
+      validators: [Validators.isNotEmpty]
     },
     {
       id: 'productionDate',
       type: 'date',
-      label: 'Production Date'
+      label: 'Production Date',
+      validators: [Validators.isNotEmpty]
     },
     {
       id: 'material',

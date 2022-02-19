@@ -8,7 +8,7 @@ class Validators {
   };
 
   static minLength(value: string): string | boolean {
-    if (typeof value !== undefined && value.length < 5) {
+    if (typeof value !== undefined && value?.length < 5) {
       return 'minimum 5 character'
     } else {
       return true
@@ -16,7 +16,7 @@ class Validators {
   };
 
   static maxLength(value: string): string | boolean {
-    if (typeof value !== undefined && value.length > 50) {
+    if (typeof value !== undefined && value?.length > 50) {
       return 'maximum 50 character'
     } else {
       return true
