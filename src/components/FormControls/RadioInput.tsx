@@ -21,7 +21,7 @@ const RadioInput = ({id, label, type, disabled, defaultValue, ...props}: RadioIn
                  {...{type}}
           />
           <label className="form-check-label"
-                 htmlFor={option.name + option.id}>
+                 htmlFor={option.name}>
             {option.name}
           </label>
         </div>
