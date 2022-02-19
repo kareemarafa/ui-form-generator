@@ -28,6 +28,7 @@ const RenderGenericFormField = ({setFieldValue, ...props}: GenericField<unknown>
 
   return (
     FormControl && <FormControl {...props}
+
                                 onChange={(event: any) => handleChange(event, props)}/>
   )
 }

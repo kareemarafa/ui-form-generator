@@ -55,7 +55,7 @@ const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
    */
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault(); // Prevent page loading by html default
-    alert(JSON.stringify(formValue))
+    alert(JSON.stringify(formValue, null, 2))
   }
 
   /**
@@ -73,9 +73,9 @@ const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
           return (
             props && <div key={props.id} className="pb-3 w-100">
               <RenderGenericFormField {...props}
-                                                errors={formErrors[props.id]}
-                                                value={formValue[props.id]}
-                                                setFieldValue={handleChange}/>
+                                      errors={formErrors[props.id]}
+                                      value={formValue[props.id] ?? ''}
+                                      setFieldValue={handleChange}/>
             </div>
           )
         })}
