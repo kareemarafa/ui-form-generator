@@ -62,14 +62,9 @@ const metadata: Metadata = {
       type: 'checkbox',
       label: 'Terms and Conditions',
       extras: {
+        controlLabel: 'Agree to terms and conditions',
         content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. en book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
       },
-      options: [
-        {
-          id: 1,
-          name: 'Agree to terms and conditions',
-        }
-      ]
     }
   ]
 }
@@ -84,7 +79,7 @@ const data: FormThreeType = {
   condition: 'Refurbished',
   price: 1049,
   description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. en book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-  termsAndConditions: 0,
+  termsAndConditions: 1,
 }
 
 export default {metadata, data};

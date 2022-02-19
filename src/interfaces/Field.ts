@@ -1,4 +1,4 @@
-import {FormEvent, HTMLProps} from "react";
+import {HTMLProps} from "react";
 
 export interface Field<T> extends HTMLProps<T> {
   id: string;
@@ -17,10 +17,11 @@ export interface SelectOption {
 }
 
 export interface FieldExtras {
+  controlLabel?: string;
   content?: string;
 }
 
 export interface GenericField<T> extends Field<T> {
   defaultValue?: any;
-  setFieldValue: (fieldName: string, event: FormEvent) => void;
+  setFieldValue: (fieldName: string, event: number) => void;
 }

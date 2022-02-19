@@ -71,11 +71,11 @@ const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
         {Object.keys(data).map((key: any) => {
           const [props] = metadata.fields.filter(meta => meta.id === key); // catch first item in the filtered array
           return (
-            <div key={props.id} className="pb-3 w-100">
-              {props && <RenderGenericFormField {...props}
+            props && <div key={props.id} className="pb-3 w-100">
+              <RenderGenericFormField {...props}
                                                 errors={formErrors[props.id]}
                                                 value={formValue[props.id]}
-                                                setFieldValue={handleChange}/>}
+                                                setFieldValue={handleChange}/>
             </div>
           )
         })}

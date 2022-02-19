@@ -1,5 +1,6 @@
-import {GenericField} from "../interfaces";
+import {Field, GenericField} from "../interfaces";
 import {FormFields} from "./FormControls";
+import {ChangeEvent} from "react";
 
 /**
  * Use independent generic form field
@@ -10,10 +11,24 @@ import {FormFields} from "./FormControls";
  */
 const RenderGenericFormField = ({setFieldValue, ...props}: GenericField<unknown>) => {
   const FormControl = FormFields[props.type];
+
+  /**
+   * Manage emitting form field value
+   * @param event
+   * @param props
+   */
+  const handleChange = (event: ChangeEvent<any>, props: Field<any>) => {
+    if (props.type === 'checkbox') {
+      const value = Boolean(event.target.checked);
+      setFieldValue(props.id, value ? 1 : 0);
+    } else {
+      setFieldValue(props.id, event.target.value)
+    }
+  }
+
   return (
-    <FormControl
-      {...props}
-      onChange={(event: any) => setFieldValue(props.id, event.target.value)}/>
+    FormControl && <FormControl {...props}
+                                onChange={(event: any) => handleChange(event, props)}/>
   )
 }
 
