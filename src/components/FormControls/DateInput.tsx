@@ -5,7 +5,7 @@ const DateInput = ({id, label, type, disabled, value, ...props}: DateInputInterf
     <div>
       <label className="form-label" htmlFor={id}>{label}</label>
       <input className="form-control"
-             {...{id, type, disabled, value}}
+             {...{id, type, disabled}}
              {...props}/>
     </div>
   )

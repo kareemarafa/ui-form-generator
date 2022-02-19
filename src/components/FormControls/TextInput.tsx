@@ -5,7 +5,7 @@ const TextInput = ({id, label, type, disabled, value, ...props}: TextInputInterf
     <div>
       <label className="form-label" htmlFor={id}>{label}</label>
       <input className="form-control"
-             {...{id, type, disabled, value}}
+             {...{id, type, disabled}}
              {...props}/>
     </div>
   )
