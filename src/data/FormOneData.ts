@@ -1,5 +1,6 @@
 import {Metadata} from "../interfaces";
 import {GenericFormType} from "../interfaces/GenericFormType";
+import Validators from "../helpers/validators";
 
 export interface FormOneType extends GenericFormType {
   [index: string]: any;
@@ -16,12 +17,14 @@ const metadata: Metadata = {
     {
       id: 'name',
       type: 'text',
-      label: 'Name'
+      label: 'Name',
+      validators: [Validators.isNotEmpty]
     },
     {
       id: 'age',
       type: 'number',
-      label: 'Age'
+      label: 'Age',
+      validators: [Validators.min, Validators.max]
     },
     {
       id: 'comment',

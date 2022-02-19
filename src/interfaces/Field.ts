@@ -8,6 +8,7 @@ export interface Field<T> extends HTMLProps<T> {
   extras?: FieldExtras;
   options?: SelectOption[];
   error?: string;
+  validators?: any[];
 }
 
 export interface SelectOption {

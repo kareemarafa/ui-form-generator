@@ -1,4 +1,4 @@
-import {FormEvent, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
 import {DynamicForm} from "../interfaces/DynamicForm";
 import {GenericFormType} from "../interfaces/GenericFormType";
 import RenderGenericFormField from "../components/GenericField";
@@ -8,7 +8,25 @@ const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
   /**
    * form state
    */
-  const [formValue, setFormValue] = useState<any>({});
+  const [formValue, setFormValue] = useState<any>(data);
+  const [formErrors, setFormErrors] = useState<any>({});
+
+  useEffect(() => handleErrors(), [formValue])
+
+  const handleErrors = () => {
+    let errors = {};
+    Object.keys(formValue).forEach(() => {
+      metadata.fields.forEach(({id, validators}) => {
+        const fieldErrors: string[] = [];
+        validators && validators.forEach((validator: any) => {
+          const errorState = validator(formValue[id]);
+          typeof errorState === 'string' && fieldErrors.push(errorState);
+        })
+        errors = {...errors, [id]: fieldErrors};
+      });
+    })
+    setFormErrors({...formErrors, ...errors})
+  }
 
   /**
    * Handle change event
@@ -46,6 +64,7 @@ const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
             <div key={props.id} className="pb-3 w-100">
               {props && <RenderGenericFormField {...props}
                                                 initValue={data[key]}
+                                                error={formErrors[props.id]}
                                                 value={formValue[props.id]}
                                                 setFieldValue={handleChange}/>}
             </div>
