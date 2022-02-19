@@ -2,8 +2,18 @@ import {FormEvent, useEffect, useState} from "react";
 import {DynamicForm} from "../interfaces/DynamicForm";
 import {GenericFormType} from "../interfaces/GenericFormType";
 import RenderGenericFormField from "../components/GenericField";
+import {useLocation} from 'react-router-dom';
 
 const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
+
+  const useLocationChange = (action: any) => {
+    const location = useLocation()
+    useEffect(() => {
+      action(location)
+    }, [location])
+  }
+
+  useLocationChange(() => handleReset())
 
   /**
    * form state
@@ -63,12 +73,10 @@ const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
           return (
             <div key={props.id} className="pb-3 w-100">
               {props && <RenderGenericFormField {...props}
-                                                initValue={data[key]}
                                                 errors={formErrors[props.id]}
                                                 value={formValue[props.id]}
                                                 setFieldValue={handleChange}/>}
             </div>
-
           )
         })}
         <div className="w-100 mt-2">
@@ -78,6 +86,7 @@ const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
           </div>
         </div>
       </form>
+      <pre>{JSON.stringify(formValue, null, 2)}</pre>
     </div>
   )
 }

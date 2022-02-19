@@ -23,7 +23,8 @@ const metadata: Metadata = {
     {
       id: 'image',
       type: 'file',
-      label: "Image"
+      label: "Image",
+      disabled: true
     },
     {
       id: 'title',

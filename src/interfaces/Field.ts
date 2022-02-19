@@ -21,6 +21,6 @@ export interface FieldExtras {
 }
 
 export interface GenericField<T> extends Field<T> {
-  initValue?: any;
+  defaultValue?: any;
   setFieldValue: (fieldName: string, event: FormEvent) => void;
 }
