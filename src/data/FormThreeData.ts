@@ -8,10 +8,10 @@ export interface FormThreeType extends GenericFormType {
   image: string;
   title: string;
   category: number;
-  condition: number;
+  condition: string;
   price: number;
   description: string;
-  termsAndConditions: boolean;
+  termsAndConditions: number;
 }
 
 /**
@@ -44,8 +44,7 @@ const metadata: Metadata = {
     {
       id: 'price',
       type: 'number',
-      label: 'Price',
-      suffix: '$'
+      label: 'Price'
     },
     {
       id: 'description',
@@ -56,7 +55,7 @@ const metadata: Metadata = {
     {
       id: 'termsAndConditions',
       type: 'checkbox',
-      label: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+      label: 'and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
     }
   ]
 }
@@ -68,10 +67,10 @@ const data: FormThreeType = {
   image: cameraImage,
   title: 'Cannon 5D Mark IV DSLR professional Camera',
   category: 1,
-  condition: 3,
+  condition: 'Refurbished',
   price: 1049,
-  description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-  termsAndConditions: false,
+  description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. en book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+  termsAndConditions: 0,
 }
 
 export default {metadata, data};

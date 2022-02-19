@@ -23,6 +23,7 @@ const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
     useEffect(() => setFieldValue(props.id, initValue), []) // Set field value at form
     return (
       <FormControl
+        value={formValue[props.id]}
         defaultValue={initValue}
         onChange={(event: any) => setFieldValue(props.id, event.target.value)} {...props}/>
     )

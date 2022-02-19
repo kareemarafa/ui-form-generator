@@ -1,18 +1,27 @@
-import {SelectInputInterface} from "../../interfaces/SelectInputInterface";
+import {RadioInputInterface} from "../../interfaces/RadioInputInterface";
+import {useState} from "react";
 
-const RadioInput = ({id, label, type, disabled, value, defaultValue, ...props}: SelectInputInterface) => {
+const RadioInput = ({id, label, type, disabled, defaultValue, ...props}: RadioInputInterface) => {
+  const [checked, setChecked] = useState<any>(defaultValue);
   return (
     <div>
       <label className="form-label" htmlFor={id}>{label}</label>
-      {props?.options?.map(option => (
-        <div className="form-check" key={option.id}>
+      {props?.options?.map((option, index) => (
+        <div className="form-check" key={index}>
           <input className="form-check-input"
-                 name={option.name + id}
+                 {...props}
                  id={option.name}
-                 checked={defaultValue === option.id}
-                 {...{type}}/>
+                 name={option.name + option.id}
+                 value={option.name}
+                 checked={option.name === checked}
+                 onChange={(e: any) => {
+                   setChecked(e.target.value);
+                   props.onChange && props.onChange(e)
+                 }}
+                 {...{type}}
+          />
           <label className="form-check-label"
-                 htmlFor={option.name + id}>
+                 htmlFor={option.name + option.id}>
             {option.name}
           </label>
         </div>
