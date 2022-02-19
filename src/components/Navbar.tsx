@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 
 const Navbar = () => {
@@ -10,13 +10,19 @@ const Navbar = () => {
             className="text-muted">(CerQlar Assignment)</small></span>
           <ul className="nav">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">Bob's</Link>
+              <NavLink
+                className={({isActive}) => isActive ? 'nav-link text-primary' : 'nav-link text-secondary'}
+                aria-current="page" to="/">Bob's</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/product">Product</Link>
+              <NavLink
+                className={({isActive}) => isActive ? 'nav-link text-primary' : 'nav-link text-secondary'}
+                to="/product">Product</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/listing">Listing</Link>
+              <NavLink
+                className={({isActive}) => isActive ? 'nav-link text-primary' : 'nav-link text-secondary'}
+                to="/listing">Listing</NavLink>
             </li>
           </ul>
         </div>
