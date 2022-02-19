@@ -55,7 +55,16 @@ const metadata: Metadata = {
     {
       id: 'termsAndConditions',
       type: 'checkbox',
-      label: 'and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+      label: 'Terms and Conditions',
+      extras: {
+        content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. en book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+      },
+      options: [
+        {
+          id: 1,
+          name: 'Agree to terms and conditions',
+        }
+      ]
     }
   ]
 }

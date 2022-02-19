@@ -10,7 +10,7 @@ const Layout = () => {
   return (
     <>
       <Navbar />
-      <div className="container pt-3">
+      <div className="container pt-3 mb-5">
         <Routes>
           <Route path="/" element={<GeneratedForm data={FormOneData.data} metadata={FormOneData.metadata} />} />
           <Route path="/product" element={<GeneratedForm data={FormTwoData.data} metadata={FormTwoData.metadata} />} />

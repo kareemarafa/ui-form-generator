@@ -5,12 +5,17 @@ export interface Field<T> extends HTMLProps<T> {
   type: string;
   label: string;
   disabled?: boolean;
+  extras?: FieldExtras;
   options?: SelectOption[]
 }
 
 export interface SelectOption {
   id: number;
   name: string;
+}
+
+export interface FieldExtras {
+  content?: string;
 }
 
 export interface GenericField<T> extends Field<T> {

@@ -54,12 +54,14 @@ const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
   }
 
   return (
-    <div className="col-6 offset-3">
-      <form className="d-flex flex-column align-items-center" onSubmit={handleSubmit}>
+    <div className="col-8 offset-2">
+      <form className="d-flex flex-column align-items-center"
+            // onReset={handleReset} todo handle reset state
+            onSubmit={handleSubmit}>
         {Object.keys(data).map((key: any) => {
           const [props] = metadata.fields.filter(meta => meta.id === key); // catch first item in the filtered array
           return (
-            <div key={props.id} className="pb-2 w-100">
+            <div key={props.id} className="pb-3 w-100">
               {props && <RenderGenericFormField {...props}
                                                 initValue={data[key]}
                                                 setFieldValue={handleChange}/>}
@@ -67,9 +69,10 @@ const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
 
           )
         })}
-        <div className="mt-2">
-          <div className="align-self-end">
-            <button type="submit" className="btn btn-primary">Submit</button>
+        <div className="w-100 mt-2">
+          <div className="d-flex justify-content-end">
+            <button type="reset" className="btn btn-default mx-2">Reset</button>
+            <button type="submit" className="btn btn-outline-primary">Submit</button>
           </div>
         </div>
       </form>
