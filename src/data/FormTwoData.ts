@@ -5,9 +5,11 @@ import {DateFormatter} from "../helpers/date-formatter";
 
 export interface FormTwoType extends GenericFormType {
   [index: string]: any;
-
+  image: any;
   name: string;
+  material: number;
   guarantee: number;
+  productionDate: string;
   description: string;
 }
 
