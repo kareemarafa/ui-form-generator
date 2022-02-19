@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import './styles/FileInputStyle.scss';
 import placeholder from './assets/placeholder-image.png';
 
-const FileInput = ({id, ...props}: FileInterface) => {
+const FileInput = ({id, errors, ...props}: FileInterface) => {
   const [image, setImage] = useState<string>(placeholder);
   const inputRef = useRef<HTMLInputElement>(null);
   const dimensionsXY = 200;
@@ -18,8 +18,9 @@ const FileInput = ({id, ...props}: FileInterface) => {
   }, [props?.value]);
 
   const onImageChange = (event: any) => {
-    if (event.target.files && event.target.files[0]) {
-      setImage(URL.createObjectURL(event.target.files[0]));
+    const image = event?.target?.files[0]
+    if (image) {
+      setImage(URL.createObjectURL(image));
     }
   }
 
@@ -35,10 +36,14 @@ const FileInput = ({id, ...props}: FileInterface) => {
         </div>}
       <input className="d-none"
              ref={inputRef}
-             onChange={onImageChange}
+             onChange={(e) => {
+               onImageChange(e);
+               props.onChange && props.onChange(e)
+             }}
              type={props.type}
              disabled={props.disabled}
              id={id}/>
+      {(errors && errors?.length > 0) && <small className="text-danger">{errors.join(', ')}</small>}
     </div>
   )
 }

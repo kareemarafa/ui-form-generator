@@ -47,7 +47,7 @@ class Validators {
     return typeof value !== "undefined" ?? !!value.match(/^[0-9]+$/)
   }
 
-  static isEmail(value: any): boolean {
+  static isEmail(value: any): string | boolean {
     let lastAtPos = value.lastIndexOf("@");
     let lastDotPos = value.lastIndexOf(".");
     return lastAtPos < lastDotPos &&
@@ -55,7 +55,6 @@ class Validators {
       value.indexOf("@@") === -1 &&
       lastDotPos > 2 &&
       value.length - lastDotPos > 2;
-
   }
 }
 

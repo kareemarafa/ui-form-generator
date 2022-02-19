@@ -23,5 +23,5 @@ export interface FieldExtras {
 
 export interface GenericField<T> extends Field<T> {
   defaultValue?: any;
-  setFieldValue: (fieldName: string, event: number) => void;
+  setFieldValue: (fieldName: string, event: any) => void;
 }

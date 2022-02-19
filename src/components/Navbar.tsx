@@ -12,7 +12,7 @@ const Navbar = () => {
             <li className="nav-item">
               <NavLink
                 className={({isActive}) => isActive ? 'nav-link text-primary' : 'nav-link text-secondary'}
-                aria-current="page" to="/">Bob's</NavLink>
+                aria-current="page" to="/">Bob</NavLink>
             </li>
             <li className="nav-item">
               <NavLink

@@ -18,11 +18,21 @@ const RenderGenericFormField = ({setFieldValue, ...props}: GenericField<unknown>
    * @param props
    */
   const handleChange = (event: ChangeEvent<any>, props: Field<any>) => {
-    if (props.type === 'checkbox') {
-      const value = Boolean(event.target.checked);
-      setFieldValue(props.id, value ? 1 : 0);
-    } else {
-      setFieldValue(props.id, event.target.value)
+    switch (props.type) {
+      case 'checkbox': {
+        const value = Boolean(event.target.checked);
+        setFieldValue(props.id, value ? 1 : 0);
+        break;
+      }
+      case 'file': {
+        const value = URL.createObjectURL(event.target.files[0]);
+        setFieldValue(props.id, value)
+        break;
+      }
+      default: {
+        setFieldValue(props.id, event.target.value)
+
+      }
     }
   }
 
