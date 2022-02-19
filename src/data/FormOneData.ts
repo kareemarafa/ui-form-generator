@@ -18,13 +18,13 @@ const metadata: Metadata = {
       id: 'name',
       type: 'text',
       label: 'Name',
-      validators: [Validators.isNotEmpty]
+      validators: [Validators.isNotEmpty, Validators.maxLength, Validators.minLength]
     },
     {
       id: 'age',
       type: 'number',
       label: 'Age',
-      validators: [Validators.min, Validators.max]
+      validators: [Validators.isNotEmpty, Validators.min, Validators.max]
     },
     {
       id: 'comment',

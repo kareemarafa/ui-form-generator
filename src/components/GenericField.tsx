@@ -11,12 +11,12 @@ import {useEffect} from "react";
  * @param props
  * @constructor
  */
-const RenderGenericFormField = ({initValue, setFieldValue, value, error, ...props}: GenericField<unknown>) => {
+const RenderGenericFormField = ({initValue, setFieldValue, value, errors, ...props}: GenericField<unknown>) => {
   const FormControl = FormFields[props.type];
   useEffect(() => setFieldValue(props.id, initValue), []) // Set field value at form
   return (
     <FormControl
-      {...{value, error}}
+      {...{value, errors}}
       defaultValue={initValue}
       onChange={(event: any) => setFieldValue(props.id, event.target.value)} {...props}/>
   )

@@ -7,6 +7,22 @@ class Validators {
     }
   };
 
+  static minLength(value: string): string | boolean {
+    if (typeof value !== undefined && value.length < 5) {
+      return 'minimum 5 character'
+    } else {
+      return true
+    }
+  };
+
+  static maxLength(value: string): string | boolean {
+    if (typeof value !== undefined && value.length > 50) {
+      return 'maximum 50 character'
+    } else {
+      return true
+    }
+  };
+
   static onlyLetters(value: any): boolean {
     return typeof value !== "undefined" ?? !!value.match(/^[a-zA-Z]+$/)
   }

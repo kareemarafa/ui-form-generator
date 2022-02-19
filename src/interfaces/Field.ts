@@ -7,7 +7,7 @@ export interface Field<T> extends HTMLProps<T> {
   disabled?: boolean;
   extras?: FieldExtras;
   options?: SelectOption[];
-  error?: string;
+  errors?: string[];
   validators?: any[];
 }
 

@@ -64,7 +64,7 @@ const GeneratedForm = ({metadata, data}: DynamicForm<GenericFormType>) => {
             <div key={props.id} className="pb-3 w-100">
               {props && <RenderGenericFormField {...props}
                                                 initValue={data[key]}
-                                                error={formErrors[props.id]}
+                                                errors={formErrors[props.id]}
                                                 value={formValue[props.id]}
                                                 setFieldValue={handleChange}/>}
             </div>
