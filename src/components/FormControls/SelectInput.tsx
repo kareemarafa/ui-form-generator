@@ -4,7 +4,7 @@ const SelectInput = ({id, label, type, disabled, value, ...props}: SelectInputIn
   return (
     <div>
       <label className="form-label" htmlFor={id}>{label}</label>
-      <select className="form-control"
+      <select className="form-select"
               {...{id, type, disabled, value}}
               {...props}>
         {props?.options?.map(option => <option key={option.id} value={option.id}>{option.name}</option>)}
