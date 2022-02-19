@@ -1,6 +1,7 @@
 import {Metadata} from "../interfaces";
 import {GenericFormType} from "../interfaces/GenericFormType";
 import productImage from '../assets/markus-office-chair-vissle-dark.jpg';
+import {DateFormatter} from "../helpers/date-formatter";
 
 export interface FormTwoType extends GenericFormType {
   [index: string]: any;
@@ -58,7 +59,7 @@ const data: FormTwoType = {
   name: "MARKUS",
   material: 2,
   guarantee: 10,
-  productionDate: '20/02/2022',
+  productionDate: DateFormatter(new Date()),
   description: "Adjust the height and angle of this chair so your workday feels comfortable – the mesh backrest lets air through so you keep cool even when the workload rises. Built to outlast years of ups and downs"
 }
 
