@@ -8,16 +8,16 @@ class Validators {
   };
 
   static minLength(value: string): string | boolean {
-    if (typeof value !== undefined && value?.length < 5) {
-      return 'minimum 5 character'
+    if (value && value?.length < 5) {
+      return 'min 5 character'
     } else {
       return true
     }
   };
 
   static maxLength(value: string): string | boolean {
-    if (typeof value !== undefined && value?.length > 50) {
-      return 'maximum 50 character'
+    if (value && value?.length > 50) {
+      return 'max 50 character'
     } else {
       return true
     }
@@ -28,7 +28,7 @@ class Validators {
   }
 
   static min(value: number): string | boolean {
-    if (value < 18) {
+    if (value && value < 18) {
       return 'min value is 18';
     } else {
       return true;
@@ -36,7 +36,7 @@ class Validators {
   }
 
   static max(value: number): string | boolean {
-    if (value > 100) {
+    if (value && value > 100) {
       return 'max value is 100';
     } else {
       return true;
@@ -48,13 +48,21 @@ class Validators {
   }
 
   static isEmail(value: any): string | boolean {
-    let lastAtPos = value.lastIndexOf("@");
-    let lastDotPos = value.lastIndexOf(".");
-    return lastAtPos < lastDotPos &&
-      lastAtPos > 0 &&
-      value.indexOf("@@") === -1 &&
-      lastDotPos > 2 &&
-      value.length - lastDotPos > 2;
+    const regEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (value && !value.toLowerCase().match(regEx)) {
+      return 'Is not valid email e.g bob@app.com'
+    } else {
+      return true
+    }
+  }
+
+  static isPhoneNumber(value: any): string | boolean {
+    const regEx = /\+\d{5}[ ]?(\d+(-| )?)+/;
+    if (value && !value.toLowerCase().match(regEx)) {
+      return 'Is not valid phone number e.g +1234567890'
+    } else {
+      return true
+    }
   }
 }
 

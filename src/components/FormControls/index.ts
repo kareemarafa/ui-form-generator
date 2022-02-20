@@ -10,6 +10,7 @@ import {JSXComponentField} from "../../interfaces";
 export const FormFields: JSXComponentField = {
   text: TextInput,
   number: TextInput,
+  email: TextInput,
   textarea: Textarea,
   file: FileInput,
   date: DateInput,

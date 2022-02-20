@@ -21,6 +21,18 @@ const metadata: Metadata = {
       validators: [Validators.isNotEmpty, Validators.maxLength, Validators.minLength]
     },
     {
+      id: 'email',
+      type: 'email',
+      label: 'Email',
+      validators: [Validators.isNotEmpty, Validators.isEmail]
+    },
+    {
+      id: 'phone',
+      type: 'text',
+      label: 'Phone number',
+      validators: [Validators.isNotEmpty, Validators.isPhoneNumber]
+    },
+    {
       id: 'age',
       type: 'number',
       label: 'Age',
@@ -41,6 +53,8 @@ const metadata: Metadata = {
 const data: FormOneType = {
   name: "Bob",
   age: 42,
+  email: 'bob@example.com',
+  phone: '+1234567890',
   comment: "The best developer in the world"
 }
 
