@@ -10,6 +10,13 @@ const renderWithRouter = (ui: any, {route = '/'} = {}) => {
   return render(ui, {wrapper: BrowserRouter})
 }
 
+/**
+ * Test Cases
+ * 1- Render TextInput with type text
+ * 2- Render TextInput with type number
+ * 3- Render TextInput with type email
+ */
+
 test('Render TextInput with type text', () => {
   const route = '/some-route';
   const metadataSeed: Metadata = {fields: [{id: 'name', type: 'text', label: 'Name'}]};
