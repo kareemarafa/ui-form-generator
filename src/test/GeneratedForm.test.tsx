@@ -10,9 +10,14 @@ const renderWithRouter = (ui: any, {route = '/'} = {}) => {
   return render(ui, {wrapper: BrowserRouter})
 }
 
-test('Should generate form', () => {
+test('Should generate form with all provided fields', () => {
   const route = '/some-route';
   const {data, metadata} = FormOneData;
   renderWithRouter(<GeneratedForm data={data} metadata={metadata}/>, {route});
-  expect(screen.getByTestId('name')).toBeDefined()
+  metadata.fields.forEach(field => {
+    const inputControl = screen.getByTestId(field.id) as HTMLInputElement;
+    expect(inputControl).toBeDefined()
+    // Formatted to string to prevent fails for data types 42, "42"
+    expect((inputControl.value).toString()).toEqual((data[field.id]).toString())
+  })
 });
