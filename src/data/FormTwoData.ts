@@ -68,5 +68,5 @@ const data: FormTwoType = {
   productionDate: DateFormatter(new Date()),
   description: "Adjust the height and angle of this chair so your workday feels comfortable – the mesh backrest lets air through so you keep cool even when the workload rises. Built to outlast years of ups and downs"
 }
-
-export default {metadata, data};
+const FormTwoData = {metadata, data}
+export default FormTwoData;

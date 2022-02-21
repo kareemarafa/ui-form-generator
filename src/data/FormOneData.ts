@@ -57,5 +57,5 @@ const data: FormOneType = {
   phone: '+1234567890',
   comment: "The best developer in the world"
 }
-
-export default {metadata, data};
+const FormOneData = {metadata, data}
+export default FormOneData;
