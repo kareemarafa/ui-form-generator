@@ -18,8 +18,16 @@ const Layout = () => {
    */
   const handleSubmit = (event: FormEvent, formValue: any) => {
     event.preventDefault(); // Prevent page loading by html default
-    if (formValue?.name) {
-      setServerError({name: ['Name should be unique (Backend Error)']})
+    if (formValue?.name && formValue?.email) {
+      setServerError({
+        name: ['Name should be unique (Backend Error)'],
+        email: ['Email should be unique (Backend Error)']
+      })
+    } else if (formValue?.name && formValue?.guarantee) {
+      setServerError({
+        name: ['Name should be unique (Backend Error)'],
+        guarantee: ['Guarantee shouldn\'t exceed 5 years (Backend Error)']
+      })
     } else {
       alert(JSON.stringify(formValue, null, 2))
     }
