@@ -10,6 +10,13 @@ const renderWithRouter = (ui: any, {route = '/'} = {}) => {
   return render(ui, {wrapper: BrowserRouter})
 }
 
+/**
+ * Test Cases
+ * 1- Render SelectInput
+ * 2- Render SelectInput with value
+ * 3- Render SelectInput with value changing
+ */
+
 const route = '/some-route';
 const metadataSeed: Metadata = {
   fields: [{
@@ -25,21 +32,21 @@ const dataSeed = {
 
 test('Render SelectInput', () => {
   renderWithRouter(<GeneratedForm data={dataSeed} metadata={metadataSeed}/>, {route});
-  const selectControl = screen.getByTestId('hobbies');
-  expect(selectControl).toBeDefined()
+  const inputControl = screen.getByTestId('hobbies');
+  expect(inputControl).toBeDefined()
 });
 
 test('Render SelectInput with value', () => {
   renderWithRouter(<GeneratedForm data={dataSeed} metadata={metadataSeed}/>, {route});
-  const selectControl = screen.getByTestId('hobbies') as HTMLSelectElement;
-  expect(selectControl.value).toEqual('1');
+  const inputControl = screen.getByTestId('hobbies') as HTMLSelectElement;
+  expect(inputControl.value).toEqual('1');
 })
 
 test('Render SelectInput with value changing', () => {
   renderWithRouter(<GeneratedForm data={dataSeed} metadata={metadataSeed}/>, {route});
-  const selectControl = screen.getByTestId('hobbies') as HTMLSelectElement;
+  const inputControl = screen.getByTestId('hobbies') as HTMLSelectElement;
   const options = screen.getAllByTestId('select-option') as HTMLOptionElement[];
-  fireEvent.change(selectControl, {target: {value: 2}})
+  fireEvent.change(inputControl, {target: {value: 2}})
   expect(options[0].selected).toBeFalsy();
   expect(options[1].selected).toBeTruthy();
 })
