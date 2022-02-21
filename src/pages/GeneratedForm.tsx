@@ -14,21 +14,11 @@ const GeneratedForm = ({metadata, data, serverError, handleSubmit}: DynamicForm<
   const [valid, setValid] = useState<null | boolean>(null);
 
   /**
-   * Custom hook
-   * check location change
-   * @param action
-   */
-  const useLocationChange = (action: any) => {
-    const location = useLocation()
-    useEffect(() => {
-      action(location)
-    }, [location])
-  }
-
-  /**
    * Handle Route change state
    */
-  useLocationChange(() => handleReset())
+  const location = useLocation()
+  useEffect(() => handleReset(), [location])
+
 
   /**
    * Handle backend REST validations
