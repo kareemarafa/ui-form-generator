@@ -77,7 +77,7 @@ const GeneratedForm = ({metadata, data, handleSubmit}: DynamicForm<GenericFormTy
   return (
     <div className="col-8 offset-2">
       <form className="d-flex flex-column align-items-center"
-            onSubmit={(e) => valid && handleSubmit(e, formValue)}
+            onSubmit={(e) => valid && handleSubmit && handleSubmit(e, formValue)}
             onReset={handleReset}>
         {Object.keys(data).map((key: any) => {
           const [props] = metadata.fields.filter(meta => meta.id === key); // catch first item in the filtered array

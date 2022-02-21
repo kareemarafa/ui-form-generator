@@ -38,7 +38,7 @@ const RenderGenericFormField = ({setFieldValue, ...props}: GenericField<unknown>
 
   return (
     FormControl && <FormControl {...props}
-
+                                data-testid={props.id}
                                 onChange={(event: any) => handleChange(event, props)}/>
   )
 }
