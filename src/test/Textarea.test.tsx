@@ -10,21 +10,26 @@ const renderWithRouter = (ui: any, {route = '/'} = {}) => {
   return render(ui, {wrapper: BrowserRouter})
 }
 
+/**
+ * Test Cases
+ * 1- Render Active Textarea
+ * 2- Render disabled Textarea
+ */
+
 test('Render Active Textarea', () => {
   const route = '/some-route';
   const metadataSeed: Metadata = {fields: [{id: 'description', type: 'textarea', label: 'Description'}]};
   const dataSeed = {description: 'some data ...'};
   renderWithRouter(<GeneratedForm data={dataSeed} metadata={metadataSeed}/>, {route});
-  const textarea = screen.getByTestId('description');
-  expect(textarea).toBeDefined()
-});
+  const inputControl = screen.getByTestId('description') as HTMLInputElement;
+  expect(inputControl.value).toEqual(dataSeed.description)});
 
 test('Render disabled Textarea', () => {
   const route = '/some-route';
   const metadataSeed: Metadata = {fields: [{id: 'description', type: 'textarea', label: 'Description', disabled: true}]};
   const dataSeed = {description: 'some data ...'};
   renderWithRouter(<GeneratedForm data={dataSeed} metadata={metadataSeed}/>, {route});
-  const textarea = screen.getByTestId('description');
-  expect(textarea).toHaveAttribute('disabled')
+  const inputControl = screen.getByTestId('description') as HTMLInputElement;
+  expect(inputControl).toHaveAttribute('disabled');
 });
 
