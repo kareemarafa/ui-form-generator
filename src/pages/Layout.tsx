@@ -39,6 +39,7 @@ const Layout = () => {
           <Route path="/product" key={2} element={
             <GeneratedForm data={FormTwoData.data}
                            metadata={FormTwoData.metadata}
+                           serverError={serverError}
                            {...{handleSubmit}}/>
 
           }/>
