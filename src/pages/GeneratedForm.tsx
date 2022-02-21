@@ -4,7 +4,14 @@ import {GenericFormType} from "../interfaces/GenericFormType";
 import RenderGenericFormField from "../components/GenericField";
 import {useLocation} from 'react-router-dom';
 
-const GeneratedForm = ({metadata, data, handleSubmit}: DynamicForm<GenericFormType>) => {
+const GeneratedForm = ({metadata, data, serverError, handleSubmit}: DynamicForm<GenericFormType>) => {
+
+  /**
+   * form state
+   */
+  const [formValue, setFormValue] = useState<any>(data);
+  const [formErrors, setFormErrors] = useState<any>(serverError);
+  const [valid, setValid] = useState<null | boolean>(null);
 
   /**
    * Custom hook
@@ -21,20 +28,26 @@ const GeneratedForm = ({metadata, data, handleSubmit}: DynamicForm<GenericFormTy
   /**
    * Handle Route change state
    */
-  useLocationChange(() => {
-    handleReset()
-    setFormErrors({})
-  })
+  useLocationChange(() => handleReset())
 
   /**
-   * form state
+   * Handle backend REST validations
    */
-  const [formValue, setFormValue] = useState<any>(data);
-  const [formErrors, setFormErrors] = useState<any>({});
-  const [valid, setValid] = useState<null | boolean>(null);
+  useEffect(() => {
+    if (serverError && Object.keys(serverError).length) {
+      setFormErrors(serverError)
+    }
+  }, [serverError]);
 
+  /**
+   * Handle user input validations
+   */
   useEffect(() => handleErrors(), [formValue])
 
+  /**
+   * Loop over validators for each field
+   * @return record of {inputId: ['error text']}
+   */
   const handleErrors = () => {
     let errors = {};
     Object.keys(formValue).forEach(() => {
@@ -63,7 +76,10 @@ const GeneratedForm = ({metadata, data, handleSubmit}: DynamicForm<GenericFormTy
   /**
    * Handle reset event
    */
-  const handleReset = () => setFormValue(data);
+  const handleReset = () => {
+    setFormValue(data);
+    setFormErrors({})
+  }
 
   /**
    * Set form validation
@@ -101,4 +117,8 @@ const GeneratedForm = ({metadata, data, handleSubmit}: DynamicForm<GenericFormTy
     </div>
   )
 }
+GeneratedForm.defaultProps = {
+  serverError: {}
+};
 export default GeneratedForm;
+

@@ -5,18 +5,24 @@ import GeneratedForm from "./GeneratedForm";
 import FormOneData from '../data/FormOneData';
 import FormTwoData from '../data/FormTwoData';
 import FormThreeData from '../data/FormThreeData';
-import {FormEvent} from "react";
+import {FormEvent, useState} from "react";
 
 const Layout = () => {
+
+  const [serverError, setServerError] = useState<Record<string, string[]>>();
+
   /**
    * Handle submit event
-   * todo: implement backend errors
    * @param event
    * @param formValue
    */
   const handleSubmit = (event: FormEvent, formValue: any) => {
     event.preventDefault(); // Prevent page loading by html default
-    alert(JSON.stringify(formValue, null, 2))
+    if (formValue?.name) {
+      setServerError({name: ['Name should be unique (Backend Error)']})
+    } else {
+      alert(JSON.stringify(formValue, null, 2))
+    }
   }
 
   return (
@@ -27,6 +33,7 @@ const Layout = () => {
           <Route path="/" key={1} element={
             <GeneratedForm data={FormOneData.data}
                            metadata={FormOneData.metadata}
+                           serverError={serverError}
                            {...{handleSubmit}}/>
           }/>
           <Route path="/product" key={2} element={
