@@ -12,14 +12,6 @@ const GeneratedForm = ({metadata, data, serverError, handleSubmit}: DynamicForm<
   const [formValue, setFormValue] = useState<any>(data);
   const [formErrors, setFormErrors] = useState<any>(serverError);
   const [valid, setValid] = useState<null | boolean>(null);
-
-  /**
-   * Handle Route change state
-   */
-  const location = useLocation()
-  useEffect(() => handleReset(), [location])
-
-
   /**
    * Handle backend REST validations
    */
@@ -70,6 +62,15 @@ const GeneratedForm = ({metadata, data, serverError, handleSubmit}: DynamicForm<
     setFormValue(data);
     setFormErrors({})
   }
+
+  /**
+   * Handle Route change state
+   */
+  const location = useLocation()
+  useEffect(() => {
+    setFormValue(data);
+    setFormErrors({})
+  }, [data, location])
 
   /**
    * Set form validation
