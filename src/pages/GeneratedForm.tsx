@@ -22,11 +22,6 @@ const GeneratedForm = ({metadata, data, serverError, handleSubmit}: DynamicForm<
   }, [serverError]);
 
   /**
-   * Handle user input validations
-   */
-  useEffect(() => handleErrors(), [formValue])
-
-  /**
    * Loop over validators for each field
    * @return record of {inputId: ['error text']}
    */
@@ -44,6 +39,12 @@ const GeneratedForm = ({metadata, data, serverError, handleSubmit}: DynamicForm<
     })
     setFormErrors({...formErrors, ...errors})
   }
+
+  /**
+   * Handle user input validations
+   */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => handleErrors(), [formValue])
 
   /**
    * Handle change event
